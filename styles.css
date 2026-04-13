@@ -1,0 +1,84 @@
+:root {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "EB Garamond", Georgia, serif;
+  --bg: #f3f0ea;
+  --text: #111111;
+  --muted: #5f636b;
+  --soft: rgba(17, 17, 17, 0.52);
+}
+
+body[data-theme="dark"] {
+  --bg: #0b0b0c;
+  --text: #ededed;
+  --muted: #9ca3af;
+  --soft: rgba(237, 237, 237, 0.58);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  text-transform: lowercase;
+  transition: background-color 220ms ease, color 220ms ease;
+  text-rendering: optimizeLegibility;
+}
+
+.site-shell {
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+body.is-page-entering .site-shell,
+body.is-leaving .site-shell {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+a,
+button {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+.site-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 28px 28px 36px;
+}
+
+.site-header,
+.site-footer,
+.project-summary,
+.month-group,
+.ledger-line {
+  display: grid;
+}
+
+.site-header,
+.site-footer {
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  letter-spacing: -0.04em;
+}
