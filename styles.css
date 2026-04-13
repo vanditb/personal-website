@@ -82,3 +82,87 @@ button {
   text-decoration: none;
   letter-spacing: -0.04em;
 }
+
+.header-actions,
+.site-nav,
+.social-strip,
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-actions {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.site-nav {
+  gap: 14px;
+}
+
+.nav-link,
+.theme-toggle,
+.social-strip a,
+.project-links a,
+.footer-email,
+.inline-link,
+.section-link {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 180ms ease, transform 180ms ease, opacity 180ms ease;
+}
+
+.theme-toggle {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-link.is-active {
+  color: var(--text);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.theme-toggle:hover,
+.theme-toggle:focus-visible,
+.social-strip a:hover,
+.social-strip a:focus-visible,
+.project-links a:hover,
+.project-links a:focus-visible,
+.footer-email:hover,
+.footer-email:focus-visible,
+.inline-link:hover,
+.inline-link:focus-visible,
+.section-link:hover,
+.section-link:focus-visible {
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.page {
+  padding: 60px 0 88px;
+}
+
+.page-home {
+  display: grid;
+  gap: 44px;
+}
+
+.intro-block,
+.body-copy,
+.inline-note,
+.ledger-preview,
+.project-list,
+.log-ledger {
+  max-width: 720px;
+}
+
+.page-label,
+.project-meta,
+.ledger-date,
+.ledger-tag,
+.month-label,
+.footer-left,
