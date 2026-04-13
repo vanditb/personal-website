@@ -418,3 +418,87 @@ body[data-page="build-log"] .page-label {
   margin-top: 22px;
   padding-top: 28px;
   border-top: 1px solid var(--soft);
+}
+
+.month-group {
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.month-label {
+  margin: 0;
+  color: var(--text);
+}
+
+.social-strip {
+  gap: 18px;
+  padding-top: 48px;
+  opacity: 0.82;
+}
+
+.social-strip-home {
+  padding-top: 4px;
+  font-size: 1.04rem;
+  opacity: 0.92;
+}
+
+.site-footer {
+  padding-top: 16px;
+}
+
+.footer-left {
+  display: grid;
+  gap: 4px;
+}
+
+.footer-left p,
+.footer-email {
+  margin: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 520ms ease var(--delay, 0ms),
+    transform 520ms ease var(--delay, 0ms),
+    clip-path 640ms ease var(--delay, 0ms);
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  clip-path: inset(0 0 0 0);
+}
+
+@keyframes underline-sweep {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes line-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes type-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
