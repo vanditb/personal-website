@@ -72,3 +72,41 @@ export const siteContent = {
       status: "live"
     }
   ],
+  buildLog: [
+    {
+      date: "2026-04-14",
+      entry: "shipped first clean version of the personal site",
+      tag: "website"
+    },
+    {
+      date: "2026-04-12",
+      entry: "tightened project copy and simplified layout",
+      tag: "website"
+    },
+    {
+      date: "2026-04-11",
+      entry: "set up the build log structure",
+      tag: "system"
+    },
+    {
+      date: "2026-04-09",
+      entry: "refined the news model flow after testing rough inputs",
+      tag: "news model"
+    },
+    {
+      date: "2026-04-05",
+      entry: "added clearer research summaries inside alpha notes",
+      tag: "alpha notes"
+    },
+    {
+      date: "2026-03-27",
+      entry: "cleaned up older experiments and removed noisy ideas",
+      tag: "signal lab"
+    },
+    {
+      date: "2026-03-18",
+      entry: "started a better daily workflow for market research",
+      tag: "system"
+    }
+  ]
+};
