@@ -35,3 +35,40 @@ export const siteContent = {
       year: "2026",
       status: "in progress"
     },
+    {
+      id: "market-mirror",
+      name: "market mirror",
+      blurb: "a cleaner daily view of market moves, sectors, and momentum.",
+      description:
+        "market mirror compresses a lot of market context into a smaller surface so it is easier to scan trends, follow watchlists, and notice when leadership starts to shift.",
+      why: "i built it because i wanted a market tool that feels light enough to open every day.",
+      github: "https://github.com/vanditb/market-mirror",
+      demo: "https://market-mirror-demo.vercel.app",
+      year: "2026",
+      status: "live"
+    },
+    {
+      id: "alpha-notes",
+      name: "alpha notes",
+      blurb: "an ai notebook for turning research and reading into usable notes.",
+      description:
+        "alpha notes helps collect articles, reports, and raw ideas, then rewrites them into shorter takeaways, open questions, and next steps.",
+      why: "it came out of wanting a better bridge between reading and actually building.",
+      github: "https://github.com/vanditb/alpha-notes",
+      demo: null,
+      year: "2026",
+      status: "active"
+    },
+    {
+      id: "earnings-radar",
+      name: "earnings radar",
+      blurb: "a simple tracker for upcoming earnings and the first reaction after the print.",
+      description:
+        "earnings radar keeps a tight list of companies reporting soon, adds quick context before the release, and logs how price and volume behave right after.",
+      why: "i wanted a cleaner system for studying earnings consistently instead of checking them too late.",
+      github: "https://github.com/vanditb/earnings-radar",
+      demo: "https://earnings-radar-demo.vercel.app",
+      year: "2026",
+      status: "live"
+    }
+  ],
