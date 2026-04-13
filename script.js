@@ -73,3 +73,79 @@ function initializeFadeIn() {
         }
       });
     },
+    { threshold: 0.15 }
+  );
+
+  elements.forEach((element) => observer.observe(element));
+}
+
+function initializePageTransitions() {
+  if (prefersReducedMotion.matches) {
+    return;
+  }
+
+  body.classList.add("is-page-entering");
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      body.classList.remove("is-page-entering");
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+
+    if (!link) {
+      return;
+    }
+
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    const href = link.getAttribute("href");
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:") ||
+      link.target === "_blank" ||
+      link.hasAttribute("download")
+    ) {
+      return;
+    }
+
+    const nextUrl = new URL(link.href, window.location.href);
+
+    if (nextUrl.origin !== window.location.origin) {
+      return;
+    }
+
+    if (
+      nextUrl.pathname === window.location.pathname &&
+      nextUrl.search === window.location.search &&
+      nextUrl.hash
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    body.classList.add("is-leaving");
+
+    window.setTimeout(() => {
+      window.location.href = nextUrl.href;
+    }, 180);
+  });
+}
+
+function initializeFooter() {
+  const socialStrip = document.getElementById("social-strip");
+  const footerEmail = document.getElementById("footer-email");
+  const liveTime = document.getElementById("live-time");
