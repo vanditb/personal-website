@@ -149,3 +149,79 @@ function initializeFooter() {
   const socialStrip = document.getElementById("social-strip");
   const footerEmail = document.getElementById("footer-email");
   const liveTime = document.getElementById("live-time");
+
+  if (socialStrip) {
+    socialStrip.innerHTML = content.contact.socials
+      .map(
+        (social) => `
+          <a href="${social.url}" target="_blank" rel="noreferrer">${social.label}</a>
+        `
+      )
+      .join("");
+  }
+
+  if (footerEmail) {
+    footerEmail.href = `mailto:${content.contact.email}`;
+    footerEmail.textContent = `reach out, ${content.contact.email}`;
+  }
+
+  if (liveTime) {
+    liveTime.textContent = formatClock();
+    window.setInterval(() => {
+      liveTime.textContent = formatClock();
+    }, 1000);
+  }
+}
+
+function renderHome() {
+  const currentBlock = document.getElementById("currently-working");
+  const recentActivity = document.getElementById("recent-activity");
+
+  if (!currentBlock || !recentActivity) {
+    return;
+  }
+
+  currentBlock.innerHTML = `
+    <p class="page-label">${content.profile.currentlyWorking.label}</p>
+    <p class="type-line type-line-primary">${content.profile.currentlyWorking.title}</p>
+    <p class="inline-detail type-line type-line-secondary">${content.profile.currentlyWorking.detail}</p>
+  `;
+
+  recentActivity.innerHTML = sortByNewest(content.buildLog)
+    .slice(0, 3)
+    .map(
+      (item, index) => `
+        <article class="ledger-line fade-in" style="--delay: ${index * 80}ms">
+          <span class="ledger-date">${formatDayLabel(item.date)}</span>
+          <span class="ledger-text">${item.entry}</span>
+          <span class="ledger-tag">— ${item.tag}</span>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderProjects() {
+  const projectList = document.getElementById("project-list");
+  if (!projectList) {
+    return;
+  }
+
+  projectList.innerHTML = content.projects
+    .map(
+      (project, index) => `
+        <details class="project-item fade-in" style="--delay: ${index * 70}ms">
+          <summary class="project-summary">
+            <span class="project-toggle" aria-hidden="true">></span>
+            <div class="project-copy">
+              <h2>${project.name}</h2>
+              <p>${project.blurb}</p>
+            </div>
+            <p class="project-meta">${project.year} / ${project.status}</p>
+          </summary>
+          <div class="project-detail">
+            <p>${project.description}</p>
+            <p>${project.why}</p>
+            <div class="project-links">
+              <a href="${project.github}" target="_blank" rel="noreferrer">→ github</a>
+              ${
