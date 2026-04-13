@@ -225,3 +225,79 @@ function renderProjects() {
             <div class="project-links">
               <a href="${project.github}" target="_blank" rel="noreferrer">→ github</a>
               ${
+                project.demo
+                  ? `<a href="${project.demo}" target="_blank" rel="noreferrer">→ live</a>`
+                  : ""
+              }
+            </div>
+          </div>
+        </details>
+      `
+    )
+    .join("");
+}
+
+function renderBuildLog() {
+  const buildLogLedger = document.getElementById("build-log-ledger");
+  if (!buildLogLedger) {
+    return;
+  }
+
+  const grouped = sortByNewest(content.buildLog).reduce((accumulator, item) => {
+    const month = formatMonthLabel(item.date);
+    if (!accumulator[month]) {
+      accumulator[month] = [];
+    }
+
+    accumulator[month].push(item);
+    return accumulator;
+  }, {});
+
+  buildLogLedger.innerHTML = Object.entries(grouped)
+    .map(
+      ([month, entries]) => `
+        <section class="month-group fade-in">
+          <p class="month-label">${month}</p>
+          <div class="month-entries">
+            ${entries
+              .map(
+                (item, index) => `
+                  <article class="ledger-line fade-in" style="--delay: ${index * 80}ms">
+                    <span class="ledger-date">${formatDayLabel(item.date)}</span>
+                    <span class="ledger-text">${item.entry}</span>
+                    <span class="ledger-tag">— ${item.tag}</span>
+                  </article>
+                `
+              )
+              .join("")}
+          </div>
+        </section>
+      `
+    )
+    .join("");
+}
+
+initializeTheme();
+initializeFooter();
+initializePageTransitions();
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = body.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+  });
+}
+
+if (body.dataset.page === "home") {
+  renderHome();
+}
+
+if (body.dataset.page === "projects") {
+  renderProjects();
+}
+
+if (body.dataset.page === "build-log") {
+  renderBuildLog();
+}
+
+initializeFadeIn();
